@@ -2,13 +2,15 @@ import { useAppSelector } from '../../hooks';
 import { selectOrders } from '../../store/order-slice/order-slice';
 import OrderItem from './order-item/order-item';
 
+import styles from './order-list.module.scss';
+
 function OrdersList(): JSX.Element {
   const orders = useAppSelector(selectOrders);
 
   return (
-    <table>
+    <table className={styles.table}>
       <thead>
-        <tr>
+        <tr className={styles.row}>
           <th>№</th>
           <th>Номер / Дата</th>
           <th>Тип задания / Автор</th>
@@ -18,7 +20,7 @@ function OrdersList(): JSX.Element {
       </thead>
       <tbody>
         {orders.map((order, index) => (
-          <OrderItem order={order} index={index + 1} key={order.id} />
+          <OrderItem className={styles.row} order={order} index={index + 1} key={order.id} />
         ))}
       </tbody>
       <tfoot></tfoot>

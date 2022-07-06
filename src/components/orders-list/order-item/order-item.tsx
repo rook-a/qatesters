@@ -5,13 +5,14 @@ import Label from '../../label/label';
 interface OrderItemProps {
   order: AdaptedOrderToClient;
   index: number;
+  className: string;
 }
 
-function OrderItem({ order, index }: OrderItemProps): JSX.Element {
+function OrderItem({ className, order, index }: OrderItemProps): JSX.Element {
   const { id, status, orderType, terminal, account, createdUser, createdDate } = order;
 
   return (
-    <tr>
+    <tr className={className}>
       <td>{index}</td>
       <td>
         {`№${id}`}

@@ -1,0 +1,22 @@
+@import '../../variables.scss';
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  margin-bottom: 100px;
+
+  & thead {
+    text-align: left;
+  }
+
+  & th:last-of-type,
+  & td:last-of-type {
+    text-align: center;
+  }
+}
+
+.row {
+  height: 50px;
+  border-bottom: 1px solid $gray;
+}
