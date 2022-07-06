@@ -24,9 +24,18 @@ export interface Order {
   id: number;
   oguid: string;
   status: string;
-  order_type: OrderType;
   terminal: Terminal;
   account: Account;
-  created_user: CreatedUser;
-  created_date: Date;
+}
+
+export interface AdaptedOrderFromServer extends Order {
+  order_type?: OrderType;
+  created_user?: CreatedUser;
+  created_date?: number;
+}
+
+export interface AdaptedOrderToClient extends Order {
+  orderType?: OrderType;
+  createdUser?: CreatedUser;
+  createdDate?: number;
 }

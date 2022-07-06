@@ -13,3 +13,20 @@ export const enum AppRoute {
   Root = '/',
   NotFound = '*',
 }
+
+export const enum OrderLabelFromServer {
+  New = 'new',
+  Declined = 'declined',
+  AssignedTo = 'assigned_to',
+  Started = 'started',
+  Completed = 'completed',
+}
+
+export const enum OrderLabelForClient {
+  New = 'Новое',
+  Declined = 'Отменено',
+  AssignedTo = 'Назначено',
+  Started = 'Выполняется',
+  Completed = 'Завершено',
+  Unknown = 'Неизвестно',
+}

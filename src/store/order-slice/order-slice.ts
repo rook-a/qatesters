@@ -1,11 +1,13 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { FetchStatus, NameSpace } from '../../utils/const';
-import { Order } from '../../types/order';
+import { adaptToClient } from '../../utils/utils';
+
+import { AdaptedOrderToClient, Order } from '../../types/order';
 import { AppDispatch, State } from '../../types/state';
 
 interface InitialState {
-  orders: Order[];
+  orders: AdaptedOrderToClient[];
   ordersStatus: FetchStatus;
 }
 
@@ -21,7 +23,7 @@ export const fetchOrders = createAsyncThunk<
     dispatch: AppDispatch;
     state: State;
   }
->('data/fetchOrders', async (_args, { dispatch }): Promise<Order[]> => {
+>('data/fetchOrders', async (_args, { dispatch }): Promise<AdaptedOrderToClient[]> => {
   try {
     const data = await fetch('db.json')
       .then((res) => res.json())
@@ -30,7 +32,7 @@ export const fetchOrders = createAsyncThunk<
         console.log(error);
       });
 
-    return data;
+    return adaptToClient(data);
   } catch (error) {
     throw error;
   }
@@ -54,3 +56,7 @@ export const orderSlice = createSlice({
       });
   },
 });
+
+const selectOrderState = (state: State) => state[NameSpace.Order];
+
+export const selectOrders = (state: State) => selectOrderState(state).orders;
