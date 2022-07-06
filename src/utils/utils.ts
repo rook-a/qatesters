@@ -23,7 +23,13 @@ export const formatDate = (date: number) => {
     return 'Дата неизвестна';
   }
 
-  return new Date(date).toLocaleString('ru', { year: 'numeric', day: 'numeric', month: 'numeric' });
+  return new Date(date).toLocaleString('ru', {
+    year: 'numeric',
+    day: 'numeric',
+    month: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+  });
 };
 
 export const adaptLabelToClient = (label: string) => {

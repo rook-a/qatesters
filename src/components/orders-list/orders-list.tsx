@@ -1,25 +1,28 @@
 import { useAppSelector } from '../../hooks';
 import { selectOrders } from '../../store/order-slice/order-slice';
-import { adaptLabelToClient, formatDate } from '../../utils/utils';
+import OrderItem from './order-item/order-item';
 
 function OrdersList(): JSX.Element {
   const orders = useAppSelector(selectOrders);
 
   return (
-    <ul>
-      {orders.map(({ id, status, orderType, terminal, account, createdUser, createdDate }) => (
-        <li key={id}>
-          <p>{`№${id} ${formatDate(createdDate!)}`}</p>
-          <p>
-            {orderType?.name} {createdUser?.surname} {createdUser?.name.charAt(0)}. {createdUser?.patronymic.charAt(0)}.
-          </p>
-          <p>
-            {account.name} {terminal.name}
-          </p>
-          <span>{adaptLabelToClient(status)}</span>
-        </li>
-      ))}
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Номер / Дата</th>
+          <th>Тип задания / Автор</th>
+          <th>Аккаунт / Терминал</th>
+          <th>Статус</th>
+        </tr>
+      </thead>
+      <tbody>
+        {orders.map((order, index) => (
+          <OrderItem order={order} index={index + 1} key={order.id} />
+        ))}
+      </tbody>
+      <tfoot></tfoot>
+    </table>
   );
 }
 
