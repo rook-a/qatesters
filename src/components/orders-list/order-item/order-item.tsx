@@ -1,5 +1,6 @@
 import { AdaptedOrderToClient } from '../../../types/order';
-import { adaptLabelToClient, formatDate } from '../../../utils/utils';
+import { formatDate } from '../../../utils/utils';
+import Label from '../../label/label';
 
 interface OrderItemProps {
   order: AdaptedOrderToClient;
@@ -29,7 +30,9 @@ function OrderItem({ order, index }: OrderItemProps): JSX.Element {
         <br />
         <span>{terminal.name}</span>
       </td>
-      <td>{adaptLabelToClient(status)}</td>
+      <td>
+        <Label status={status} />
+      </td>
     </tr>
   );
 }
