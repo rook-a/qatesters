@@ -1,5 +1,7 @@
+import OrdersList from '../../components/orders-list/orders-list';
+
 function Dashboard(): JSX.Element {
-  return <>dashboard</>;
+  return <OrdersList />;
 }
 
 export default Dashboard;

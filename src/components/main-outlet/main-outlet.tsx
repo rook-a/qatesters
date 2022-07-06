@@ -1,13 +1,18 @@
 import { Outlet } from 'react-router-dom';
 
+import Footer from './footer/footer';
+import Header from './header/header';
+
+import styles from './main-outlet.module.scss';
+
 function MainOutlet(): JSX.Element {
   return (
-    <div className='container'>
-      <header>header</header>
-      <main className='page-content'>
+    <div className={styles.container}>
+      <Header />
+      <main className={styles.content}>
         <Outlet />
       </main>
-      <footer>footer</footer>
+      <Footer />
     </div>
   );
 }

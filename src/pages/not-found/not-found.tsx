@@ -10,10 +10,10 @@ function NotFound(): JSX.Element {
       <h1 className={styles.title}>Простите, такой страницы у нас нет</h1>
       <p className={styles.description}>Попробуйте перейти на другую страницу или вернуться на шаг назад</p>
       <div className={styles['button-group']}>
-        <button onClick={() => navigate('/', { replace: true })} className={styles.button}>
+        <button onClick={() => navigate('/', { replace: true })} className={styles.button} type='button'>
           На главную
         </button>
-        <button onClick={() => navigate(-1)} className={styles.button}>
+        <button onClick={() => navigate(-1)} className={styles.button} type='button'>
           Назад
         </button>
       </div>
