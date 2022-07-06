@@ -1,0 +1,36 @@
+.container {
+  padding-top: 50px;
+}
+
+.title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 50px;
+}
+
+.description {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+.button {
+  border: 1px solid black;
+  border-radius: 2px;
+  background-color: transparent;
+  cursor: pointer;
+
+  padding: 15px 35px;
+
+  transition: all 0.3s linear;
+
+  &:hover {
+    color: white;
+    background-color: black;
+  }
+}

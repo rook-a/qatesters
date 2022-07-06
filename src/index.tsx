@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import App from './components/app/app';
 
 import { store } from './store';
+import HistoryRouter from './components/history-router/history-router';
+import { browserHistory } from './browser-history';
 import { fetchOrders } from './store/order-slice/order-slice';
 
 import './global.scss';
@@ -17,7 +19,9 @@ store.dispatch(fetchOrders());
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <HistoryRouter history={browserHistory}>
+        <App />
+      </HistoryRouter>
     </Provider>
   </React.StrictMode>,
 );
