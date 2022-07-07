@@ -20,7 +20,7 @@ export interface CreatedUser {
   oguid: string;
 }
 
-export interface Order {
+export interface Task {
   id: number;
   oguid: string;
   status: string;
@@ -28,13 +28,13 @@ export interface Order {
   account: Account;
 }
 
-export interface AdaptedOrderFromServer extends Order {
+export interface AdaptedTaskFromServer extends Task {
   order_type?: OrderType;
   created_user?: CreatedUser;
   created_date?: number;
 }
 
-export interface AdaptedOrderToClient extends Order {
+export interface AdaptedTaskToClient extends Task {
   orderType?: OrderType;
   createdUser?: CreatedUser;
   createdDate?: number;

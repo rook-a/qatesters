@@ -1,30 +1,30 @@
 import { generatePath, useNavigate } from 'react-router-dom';
 
-import Label from '../../label/label';
+import Label from './label/label';
 
-import { AdaptedOrderToClient } from '../../../types/order';
+import { AdaptedTaskToClient } from '../../../types/task';
 import { formatDate } from '../../../utils/utils';
 
-import styles from './order-item.module.scss';
+import styles from './task-item.module.scss';
 
-interface OrderItemProps {
-  order: AdaptedOrderToClient;
+interface TaskItemProps {
+  task: AdaptedTaskToClient;
   index: number;
   className: string;
 }
 
-function OrderItem({ className, order, index }: OrderItemProps): JSX.Element {
+function TaskItem({ className, task, index }: TaskItemProps): JSX.Element {
   const navigate = useNavigate();
 
-  const { id, status, orderType, terminal, account, createdUser, createdDate } = order;
+  const { id, status, orderType, terminal, account, createdUser, createdDate } = task;
 
-  const link = generatePath('/order/:id', { id: `${id}` });
+  const link = generatePath('/task/:id', { id: `${id}` });
 
-  const handleOrderClick = () => {
+  const handleTaskClick = () => {
     navigate(link);
   };
 
-  const handleOrderKeyDown = (evt: KeyboardEvent) => {
+  const handleTaskKeyDown = (evt: KeyboardEvent) => {
     if (evt.key === 'Enter') {
       navigate(link);
     }
@@ -32,10 +32,10 @@ function OrderItem({ className, order, index }: OrderItemProps): JSX.Element {
 
   return (
     <tr
-      className={`${className} ${styles.order}`}
+      className={`${className} ${styles.task}`}
       tabIndex={0}
-      onClick={handleOrderClick}
-      onKeyDown={() => handleOrderKeyDown}
+      onClick={handleTaskClick}
+      onKeyDown={() => handleTaskKeyDown}
     >
       <td>{index}</td>
       <td>
@@ -62,4 +62,4 @@ function OrderItem({ className, order, index }: OrderItemProps): JSX.Element {
   );
 }
 
-export default OrderItem;
+export default TaskItem;

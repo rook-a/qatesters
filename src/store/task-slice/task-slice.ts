@@ -3,33 +3,33 @@ import { createAsyncThunk, createSlice, createSelector, PayloadAction } from '@r
 import { CURRENT_PAGE, FetchStatus, NameSpace, NUMBER_OF_ENTRIES } from '../../utils/const';
 import { adaptToClient } from '../../utils/utils';
 
-import { AdaptedOrderToClient, Order } from '../../types/order';
+import { AdaptedTaskToClient, Task } from '../../types/task';
 import { AppDispatch, State } from '../../types/state';
 
 interface InitialState {
-  orders: AdaptedOrderToClient[];
-  ordersStatus: FetchStatus;
+  tasks: AdaptedTaskToClient[];
+  tasksStatus: FetchStatus;
 
   currentPage: number;
   numberOfEntries: number;
 }
 
 const initialState: InitialState = {
-  orders: [],
-  ordersStatus: FetchStatus.Idle,
+  tasks: [],
+  tasksStatus: FetchStatus.Idle,
 
   currentPage: CURRENT_PAGE,
   numberOfEntries: NUMBER_OF_ENTRIES,
 };
 
-export const fetchOrders = createAsyncThunk<
-  Order[],
+export const fetchTasks = createAsyncThunk<
+  Task[],
   undefined,
   {
     dispatch: AppDispatch;
     state: State;
   }
->('data/fetchOrders', async (_args, { dispatch }): Promise<AdaptedOrderToClient[]> => {
+>('data/fetchTasks', async (_args, { dispatch }): Promise<AdaptedTaskToClient[]> => {
   try {
     const data = await fetch('db.json')
       .then((res) => res.json())
@@ -44,8 +44,8 @@ export const fetchOrders = createAsyncThunk<
   }
 });
 
-export const orderSlice = createSlice({
-  name: NameSpace.Order,
+export const taskSlice = createSlice({
+  name: NameSpace.Task,
   initialState,
   reducers: {
     setDecCurrentPage: (state) => {
@@ -58,7 +58,7 @@ export const orderSlice = createSlice({
       state.currentPage = CURRENT_PAGE;
     },
     setLastCurrentPage: (state) => {
-      state.currentPage = state.orders.length / state.numberOfEntries;
+      state.currentPage = state.tasks.length / state.numberOfEntries;
     },
     changeNumberOfEntries: (state, action: PayloadAction<number>) => {
       state.numberOfEntries = action.payload;
@@ -66,36 +66,36 @@ export const orderSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchOrders.pending, (state) => {
-        state.ordersStatus = FetchStatus.Pending;
+      .addCase(fetchTasks.pending, (state) => {
+        state.tasksStatus = FetchStatus.Pending;
       })
-      .addCase(fetchOrders.fulfilled, (state, action: PayloadAction<Order[]>) => {
-        state.orders = action.payload;
-        state.ordersStatus = FetchStatus.Fulfilled;
+      .addCase(fetchTasks.fulfilled, (state, action: PayloadAction<Task[]>) => {
+        state.tasks = action.payload;
+        state.tasksStatus = FetchStatus.Fulfilled;
       })
-      .addCase(fetchOrders.rejected, (state) => {
-        state.ordersStatus = FetchStatus.Rejected;
+      .addCase(fetchTasks.rejected, (state) => {
+        state.tasksStatus = FetchStatus.Rejected;
       });
   },
 });
 
 export const { setDecCurrentPage, setIncCurrentPage, setFirstCurrentPage, setLastCurrentPage, changeNumberOfEntries } =
-  orderSlice.actions;
+  taskSlice.actions;
 
-const selectOrderState = (state: State) => state[NameSpace.Order];
+const selectTaskState = (state: State) => state[NameSpace.Task];
 
-export const selectOrders = (state: State) => selectOrderState(state).orders;
-export const selectCurrentPage = (state: State) => selectOrderState(state).currentPage;
-export const selectNumberOfEntries = (state: State) => selectOrderState(state).numberOfEntries;
+export const selectTasks = (state: State) => selectTaskState(state).tasks;
+export const selectCurrentPage = (state: State) => selectTaskState(state).currentPage;
+export const selectNumberOfEntries = (state: State) => selectTaskState(state).numberOfEntries;
 
-export const selectCurrentOrders = createSelector(
-  selectOrders,
+export const selectCurrentTasks = createSelector(
+  selectTasks,
   selectCurrentPage,
   selectNumberOfEntries,
-  (orders, currentPage, numberOfEntries) => {
+  (tasks, currentPage, numberOfEntries) => {
     const endLimit = currentPage * numberOfEntries;
     const startLimit = endLimit - numberOfEntries;
 
-    return orders.slice(startLimit, endLimit);
+    return tasks.slice(startLimit, endLimit);
   },
 );

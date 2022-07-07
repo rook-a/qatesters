@@ -5,12 +5,12 @@ import {
   changeNumberOfEntries,
   selectCurrentPage,
   selectNumberOfEntries,
-  selectOrders,
+  selectTasks,
   setDecCurrentPage,
   setIncCurrentPage,
   setFirstCurrentPage,
   setLastCurrentPage,
-} from '../../store/order-slice/order-slice';
+} from '../../store/task-slice/task-slice';
 
 import { CURRENT_PAGE } from '../../utils/const';
 
@@ -18,11 +18,11 @@ import styles from './pagination.module.scss';
 
 function Pagination(): JSX.Element {
   const dispatch = useAppDispatch();
-  const orders = useAppSelector(selectOrders);
+  const tasks = useAppSelector(selectTasks);
   const currentPage = useAppSelector(selectCurrentPage);
   const numberOfEntries = useAppSelector(selectNumberOfEntries);
   const isButtonOneStepDisabled = currentPage === CURRENT_PAGE;
-  const isButtonDisabled = currentPage === orders.length / numberOfEntries;
+  const isButtonDisabled = currentPage === tasks.length / numberOfEntries;
 
   const handleSelectChange = (evt: ChangeEvent<HTMLSelectElement>) => {
     const { value } = evt.target;
@@ -34,7 +34,7 @@ function Pagination(): JSX.Element {
   return (
     <div className={styles.container}>
       <div className={styles.pagination}>
-        <span>записи {`${numberOfEntries}-${orders.length}`}</span>
+        <span>записи {`${numberOfEntries}-${tasks.length}`}</span>
 
         <div className={styles['button-group']}>
           <button

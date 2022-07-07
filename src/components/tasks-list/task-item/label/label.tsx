@@ -1,4 +1,4 @@
-import { adaptLabelToClient } from '../../utils/utils';
+import { adaptLabelToClient } from '../../../../utils/utils';
 
 import styles from './label.module.scss';
 

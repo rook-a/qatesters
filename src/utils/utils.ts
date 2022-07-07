@@ -1,20 +1,20 @@
-import { AdaptedOrderToClient, AdaptedOrderFromServer } from '../types/order';
-import { OrderLabelForClient, OrderLabelFromServer } from './const';
+import { AdaptedTaskToClient, AdaptedTaskFromServer } from '../types/task';
+import { TaskLabelForClient, TaskLabelFromServer } from './const';
 
-export const adaptToClient = (orders: AdaptedOrderFromServer[]): AdaptedOrderToClient[] => {
-  return orders.map((order) => {
-    const adaptedOrder = {
-      ...order,
-      orderType: order['order_type'],
-      createdUser: order['created_user'],
-      createdDate: order['created_date'],
+export const adaptToClient = (tasks: AdaptedTaskFromServer[]): AdaptedTaskToClient[] => {
+  return tasks.map((task) => {
+    const adaptedTask = {
+      ...task,
+      orderType: task['order_type'],
+      createdUser: task['created_user'],
+      createdDate: task['created_date'],
     };
 
-    delete adaptedOrder['order_type'];
-    delete adaptedOrder['created_user'];
-    delete adaptedOrder['created_date'];
+    delete adaptedTask['order_type'];
+    delete adaptedTask['created_user'];
+    delete adaptedTask['created_date'];
 
-    return adaptedOrder;
+    return adaptedTask;
   });
 };
 
@@ -34,17 +34,17 @@ export const formatDate = (date: number) => {
 
 export const adaptLabelToClient = (label: string) => {
   switch (label) {
-    case OrderLabelFromServer.New:
-      return OrderLabelForClient.New;
-    case OrderLabelFromServer.Started:
-      return OrderLabelForClient.Started;
-    case OrderLabelFromServer.AssignedTo:
-      return OrderLabelForClient.AssignedTo;
-    case OrderLabelFromServer.Declined:
-      return OrderLabelForClient.Declined;
-    case OrderLabelFromServer.Completed:
-      return OrderLabelForClient.Completed;
+    case TaskLabelFromServer.New:
+      return TaskLabelForClient.New;
+    case TaskLabelFromServer.Started:
+      return TaskLabelForClient.Started;
+    case TaskLabelFromServer.AssignedTo:
+      return TaskLabelForClient.AssignedTo;
+    case TaskLabelFromServer.Declined:
+      return TaskLabelForClient.Declined;
+    case TaskLabelFromServer.Completed:
+      return TaskLabelForClient.Completed;
     default:
-      return OrderLabelForClient.Unknown;
+      return TaskLabelForClient.Unknown;
   }
 };

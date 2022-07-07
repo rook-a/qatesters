@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { orderSlice } from './order-slice/order-slice';
+import { taskSlice } from './task-slice/task-slice';
 import { NameSpace } from '../utils/const';
 
 export const rootReducer = combineReducers({
-  [NameSpace.Order]: orderSlice.reducer,
+  [NameSpace.Task]: taskSlice.reducer,
 });

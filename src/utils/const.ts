@@ -2,7 +2,7 @@ export const CURRENT_PAGE = 1;
 export const NUMBER_OF_ENTRIES = 10;
 
 export const enum NameSpace {
-  Order = 'Order',
+  Task = 'Task',
 }
 
 export const enum FetchStatus {
@@ -17,7 +17,7 @@ export const enum AppRoute {
   NotFound = '*',
 }
 
-export const enum OrderLabelFromServer {
+export const enum TaskLabelFromServer {
   New = 'new',
   Declined = 'declined',
   AssignedTo = 'assigned_to',
@@ -25,7 +25,7 @@ export const enum OrderLabelFromServer {
   Completed = 'completed',
 }
 
-export const enum OrderLabelForClient {
+export const enum TaskLabelForClient {
   New = 'Новое',
   Declined = 'Отменено',
   AssignedTo = 'Назначено',
