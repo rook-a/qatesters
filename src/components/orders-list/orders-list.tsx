@@ -1,11 +1,11 @@
 import { useAppSelector } from '../../hooks';
-import { selectOrders } from '../../store/order-slice/order-slice';
+import { selectCurrentOrders } from '../../store/order-slice/order-slice';
 import OrderItem from './order-item/order-item';
 
 import styles from './order-list.module.scss';
 
 function OrdersList(): JSX.Element {
-  const orders = useAppSelector(selectOrders);
+  const orders = useAppSelector(selectCurrentOrders);
 
   return (
     <table className={styles.table}>

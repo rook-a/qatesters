@@ -1,3 +1,6 @@
+export const CURRENT_PAGE = 1;
+export const NUMBER_OF_ENTRIES = 10;
+
 export const enum NameSpace {
   Order = 'Order',
 }
