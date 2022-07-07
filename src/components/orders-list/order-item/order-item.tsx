@@ -1,6 +1,9 @@
+import Label from '../../label/label';
+
 import { AdaptedOrderToClient } from '../../../types/order';
 import { formatDate } from '../../../utils/utils';
-import Label from '../../label/label';
+
+import styles from './order-item.module.scss';
 
 interface OrderItemProps {
   order: AdaptedOrderToClient;
@@ -26,7 +29,7 @@ function OrderItem({ className, order, index }: OrderItemProps): JSX.Element {
           {createdUser?.surname} {createdUser?.name.charAt(0)}. {createdUser?.patronymic.charAt(0)}.
         </span>
       </td>
-      <td>
+      <td className={styles.company}>
         {account.name}
         <br />
         <span>{terminal.name}</span>

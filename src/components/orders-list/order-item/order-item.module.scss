@@ -1,0 +1,8 @@
+.company {
+  display: inline-block;
+  max-width: 300px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

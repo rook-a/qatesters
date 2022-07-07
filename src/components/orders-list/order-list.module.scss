@@ -7,7 +7,13 @@
   margin-bottom: 100px;
 
   & thead {
+    font-size: 14px;
+    color: $text-description;
     text-align: left;
+  }
+
+  & th {
+    font-weight: 400;
   }
 
   & th:last-of-type,
@@ -18,5 +24,10 @@
 
 .row {
   height: 50px;
-  border-bottom: 1px solid $gray;
+  border-bottom: 1px solid $border;
+
+  & span:not([class]) {
+    font-size: 14px;
+    color: $text-description;
+  }
 }
