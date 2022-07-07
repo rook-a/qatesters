@@ -7,21 +7,24 @@
   line-height: 1.5;
 
   margin-bottom: 70px;
+}
 
-  & thead {
-    font-size: 14px;
-    color: $text-description;
-    text-align: left;
-  }
+thead {
+  font-size: 14px;
+  color: $text-description;
+  text-align: left;
 
-  & th {
-    font-weight: 400;
+  @media (max-width: $tablet-mini) {
+    display: none;
   }
+}
 
-  & th:last-of-type,
-  & td:last-of-type {
-    text-align: center;
-  }
+th {
+  font-weight: 400;
+}
+
+th:last-of-type {
+  text-align: center;
 }
 
 .row {
@@ -30,8 +33,12 @@
 
   white-space: nowrap;
 
-  & span:not([class]) {
+  span:not([class]) {
     font-size: 14px;
     color: $text-description;
+  }
+
+  @media (max-width: $tablet-mini) {
+    height: 100%;
   }
 }

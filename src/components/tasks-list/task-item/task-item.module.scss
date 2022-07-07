@@ -1,7 +1,7 @@
 @import '../../../variables.scss';
 
 .company {
-  @media (max-width: 1200px) {
+  @media (max-width: $tablet) {
     display: inline-block;
     width: 250px;
 
@@ -19,5 +19,40 @@
   &:hover,
   &:focus {
     box-shadow: 2px 2px 7px $gray;
+  }
+
+  td:last-of-type {
+    text-align: center;
+  }
+
+  @media (max-width: $tablet-mini) {
+    display: block;
+    height: 100%;
+
+    padding: 20px 0;
+
+    td {
+      display: block;
+      position: relative;
+
+      padding-left: 200px;
+      padding-bottom: 10px;
+    }
+
+    td:last-of-type {
+      text-align: left;
+    }
+
+    td:last-of-type span {
+      text-align: center;
+    }
+
+    td::before {
+      content: attr(aria-label);
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 }

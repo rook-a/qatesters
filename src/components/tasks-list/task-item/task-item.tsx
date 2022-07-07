@@ -37,25 +37,25 @@ function TaskItem({ className, task, index }: TaskItemProps): JSX.Element {
       onClick={handleTaskClick}
       onKeyDown={() => handleTaskKeyDown}
     >
-      <td>{index}</td>
-      <td>
+      <td aria-label='№'>{index}</td>
+      <td aria-label='Номер / Дата'>
         {`№${id}`}
         <br />
         <span>{formatDate(createdDate!)}</span>
       </td>
-      <td>
+      <td aria-label='Тип задания / Автор'>
         {orderType?.name}
         <br />
         <span>
           {createdUser?.surname} {createdUser?.name.charAt(0)}. {createdUser?.patronymic.charAt(0)}.
         </span>
       </td>
-      <td className={styles.company}>
+      <td className={styles.company} aria-label='Аккаунт / Терминал'>
         {account.name}
         <br />
         <span>{terminal.name}</span>
       </td>
-      <td>
+      <td aria-label='Статус'>
         <Label status={status} />
       </td>
     </tr>
