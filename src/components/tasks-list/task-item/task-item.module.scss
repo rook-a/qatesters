@@ -1,17 +1,20 @@
 @import '../../../variables.scss';
 
 .company {
-  // display: inline-block;
-  max-width: 300px;
+  @media (max-width: 1200px) {
+    display: inline-block;
+    width: 250px;
 
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }
 
 .task {
   cursor: pointer;
   outline: none;
+
+  transition: all 0.3s linear;
 
   &:hover,
   &:focus {

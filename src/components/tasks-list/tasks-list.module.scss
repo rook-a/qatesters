@@ -4,6 +4,8 @@
   width: 100%;
   border-collapse: collapse;
 
+  line-height: 1.5;
+
   margin-bottom: 70px;
 
   & thead {
@@ -25,6 +27,8 @@
 .row {
   height: 50px;
   border-bottom: 1px solid $border;
+
+  white-space: nowrap;
 
   & span:not([class]) {
     font-size: 14px;
