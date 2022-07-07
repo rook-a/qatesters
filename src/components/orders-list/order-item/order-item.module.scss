@@ -1,8 +1,20 @@
+@import '../../../variables.scss';
+
 .company {
-  display: inline-block;
+  // display: inline-block;
   max-width: 300px;
 
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.order {
+  cursor: pointer;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    box-shadow: 2px 2px 7px $gray;
+  }
 }

@@ -1,3 +1,5 @@
+import { generatePath, useNavigate } from 'react-router-dom';
+
 import Label from '../../label/label';
 
 import { AdaptedOrderToClient } from '../../../types/order';
@@ -12,10 +14,29 @@ interface OrderItemProps {
 }
 
 function OrderItem({ className, order, index }: OrderItemProps): JSX.Element {
+  const navigate = useNavigate();
+
   const { id, status, orderType, terminal, account, createdUser, createdDate } = order;
 
+  const link = generatePath('/order/:id', { id: `${id}` });
+
+  const handleOrderClick = () => {
+    navigate(link);
+  };
+
+  const handleOrderKeyDown = (evt: KeyboardEvent) => {
+    if (evt.key === 'Enter') {
+      navigate(link);
+    }
+  };
+
   return (
-    <tr className={className}>
+    <tr
+      className={`${className} ${styles.order}`}
+      tabIndex={0}
+      onClick={handleOrderClick}
+      onKeyDown={() => handleOrderKeyDown}
+    >
       <td>{index}</td>
       <td>
         {`№${id}`}
